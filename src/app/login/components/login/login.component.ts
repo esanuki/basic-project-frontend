@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { HttpUtilService } from '../../../shared/services/http-util.services';
 import { Login } from '../../models/login';
 import { LoginService } from '../../services/login.service';
 
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private httpUtil: HttpUtilService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +44,8 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(login)
       .subscribe(data => {
-        this.snackBar.open('Sucesso ao autenticar o usuário', 'Sucesso', { duration: 5000} );
+        this.httpUtil.setToken(data);
+        this.route.navigate(['/principal']);
       },
       err => {
         this.snackBar.open('Ocorreu um erro ao logar no sistema', 'Erro', { duration: 5000 });

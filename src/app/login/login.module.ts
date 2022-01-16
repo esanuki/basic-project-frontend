@@ -16,13 +16,15 @@ import { LoginRouterOutletComponent } from './components/login-router-outlet';
 import { LoginComponent } from './components/login/login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginService } from './services/login.service';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    LoginRouterOutletComponent
+    LoginRouterOutletComponent,
+    CadastroComponent
   ],
   imports: [
     CommonModule,

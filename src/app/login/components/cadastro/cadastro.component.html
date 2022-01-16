@@ -1,0 +1,45 @@
+<form [formGroup]="cadastroForm" fxLayoutAlign="center">
+    <mat-list>
+        <mat-list-item>
+            <mat-form-field>
+                <input formControlName="nome" placeholder="Nome" matInput>
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input formControlName="email" placeholder="E-mail" matInput>
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input formControlName="senha" placeholder="Senha" type="password" matInput>
+            </mat-form-field>
+            <span matTooltip="Senha deve conter ao menos 3 caracteres">
+                <mat-icon>help</mat-icon>
+            </span>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input formControlName="confirmarSenha" placeholder="Confirmar senha" type="password" matInput>
+                
+            </mat-form-field>            
+            <span matTooltip="Senha deve conter ao menos 3 caracteres">
+                <mat-icon>help</mat-icon>
+            </span>
+        </mat-list-item>
+        <mat-list-item *ngIf="cadastroForm.errors?.validaSenha">
+            <ng-container *ngIf="cadastroForm.controls.confirmarSenha.touched">
+                <span style="color: red;" *ngIf="cadastroForm.errors?.validaSenha">
+                    Senha não são iguais
+                </span>             
+            </ng-container>           
+        </mat-list-item>
+        
+        <mat-list-item fxLayoutAlign="center">
+            <button mat-raised-button color="primary" (click)="salvar()">Registrar</button>
+            &nbsp;
+            &nbsp;
+            <a mat-button color="primary" [routerLink]="['/login']">Voltar</a>
+        </mat-list-item>
+    </mat-list>
+</form>
