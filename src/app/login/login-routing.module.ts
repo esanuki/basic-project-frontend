@@ -1,21 +1,25 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "../shared/services/auth.guard";
 import { CadastroComponent } from "./components/cadastro/cadastro.component";
-import { LoginRouterOutletComponent } from "./components/login-router-outlet";
+import { LoginRouterComponent } from "./components/login-router.component";
 import { LoginComponent } from "./components/login/login.component";
+import { LoginGuard } from "./services/login.guard";
 
 export const loginRoutes: Routes = [
     {
         path: 'login',
-        component: LoginRouterOutletComponent,
+        component: LoginRouterComponent,
         children: [
             {
                 path: '',
-                component: LoginComponent
+                component: LoginComponent,
+                canActivate: [LoginGuard]
             },
             {
                 path: 'cadastro',
-                component: CadastroComponent
+                component: CadastroComponent,
+                canActivate: [LoginGuard]
             }
         ]
     }

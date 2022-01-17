@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { MenuModule } from './menu/menu.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     LoginModule,
     MenuModule,
+    SharedModule,
     
     AppRoutingModule
   ],

@@ -1,32 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NovoComponent } from './component/novo/novo.component';
+import { ListagemComponent } from './component/listagem/listagem.component';
+import { AtualizacaoComponent } from './component/atualizacao/atualizacao.component';
+import { DetalhesComponent } from './component/detalhes/detalhes.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
-
-import { LoginRouterComponent} from './components/login-router.component';
-import { LoginComponent } from './components/login/login.component';
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginService } from './services/login.service';
-import { CadastroComponent } from './components/cadastro/cadastro.component';
-import { LoginGuard } from './services/login.guard';
-import { SharedModule } from '../shared/shared.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ClienteRoutingModule } from './cliente-routing.module';
+import { ClienteRouterComponent } from './component/cliente.router.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    LoginRouterComponent,
-    CadastroComponent
+    ClienteRouterComponent,
+    NovoComponent, 
+    ListagemComponent, 
+    AtualizacaoComponent, 
+    DetalhesComponent
   ],
   imports: [
     CommonModule,
@@ -40,13 +39,8 @@ import { SharedModule } from '../shared/shared.module';
     MatSnackBarModule,
     MatListModule,
     FlexLayoutModule,
-    SharedModule,
 
-    LoginRoutingModule
-  ],
-  providers: [
-    LoginService,
-    LoginGuard
+    ClienteRoutingModule
   ]
 })
-export class LoginModule { }
+export class ClienteModule { }

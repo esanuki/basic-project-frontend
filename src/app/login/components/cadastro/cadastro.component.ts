@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SpinnerComponent } from '../../../shared/component/spinner/spinner.component';
 import { Login } from '../../models/login';
 import { LoginService } from '../../services/login.service';
 import { LoginValidators } from '../../utils/login.validators';
@@ -13,6 +14,7 @@ import { LoginValidators } from '../../utils/login.validators';
 })
 export class CadastroComponent implements OnInit {
 
+  @ViewChild(SpinnerComponent) spinner: SpinnerComponent;
   cadastroForm: FormGroup;
 
   constructor(
@@ -43,14 +45,19 @@ export class CadastroComponent implements OnInit {
       this.snackBar.open('Formulário inválido', 'Erro', { duration: 5000 });
       return;
     }
+
+    this.spinner.open();
+
     let login: Login = this.cadastroForm.getRawValue();
 
     this.loginService.registrar(login)
       .subscribe(data => {
+        this.spinner.close();
         this.snackBar.open('Usuário cadastrado com sucesso!', 'Sucesso', { duration: 3000});
         this.router.navigate(['/login']);
       },
       err => {
+        this.spinner.close();
         this.snackBar.open('Ocorreu um erro ao cadastrar o usuário', 'Erro', { duration: 3000 });
       })
   }
