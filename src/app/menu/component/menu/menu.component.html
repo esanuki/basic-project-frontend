@@ -1,7 +1,7 @@
 <div>
   <button mat-button [matMenuTriggerFor]="aboveMenu">Cadastro</button>
   <mat-menu #aboveMenu="matMenu" yPosition="above">
-    <button mat-menu-item (click)="cadastroCliente()">Clientes</button>
+    <button mat-menu-item [routerLink]="['/cliente/listagem']">Clientes</button>
     <button mat-menu-item (click)="cadastroProduto()">Produtos</button>
   </mat-menu>
 

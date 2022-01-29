@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SpinnerComponent } from '../../../shared/component/spinner/spinner.component';
@@ -15,17 +16,19 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  @ViewChild(SpinnerComponent) spinner: SpinnerComponent;
+  spinner: SpinnerComponent;
 
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private loginService: LoginService,
     private httpUtil: HttpUtilService,
-    private route: Router
+    private route: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    this.spinner = new SpinnerComponent(this.dialog);
     this.gerarForm();
   }
 

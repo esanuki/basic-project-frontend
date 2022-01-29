@@ -11,6 +11,7 @@ import { LoginModule } from './login/login.module';
 import { MenuModule } from './menu/menu.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
     FlexLayoutModule,
     LoginModule,
     MenuModule,
+    MatDialogModule,
     SharedModule,
     
     AppRoutingModule

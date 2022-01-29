@@ -1,1 +1,60 @@
-<p>listagem works!</p>
+<div fxFlex="90" fxFlexOffset="5">
+    <a mat-raised-button color="warn" [routerLink]="['/cliente/novo']" class="mat-margin-bottom">Adicionar cliente</a>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Nome
+            </mat-header-cell>
+            <mat-cell *matCellDef="let cliente">
+                {{ cliente.nome }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cpf">
+            <mat-header-cell *matHeaderCellDef >
+                CPF
+            </mat-header-cell>
+            <mat-cell *matCellDef="let cliente">
+                {{ cliente.cpf }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email" >
+            <mat-header-cell *matHeaderCellDef>
+                E-mail
+            </mat-header-cell>
+            <mat-cell *matCellDef="let cliente">
+                {{ cliente.email }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <mat-header-cell *matHeaderCellDef>
+                Ação
+            </mat-header-cell>
+            <mat-cell *matCellDef="let cliente">
+                <a routerLink="{{ '/cliente/detalhes/' + cliente.id }}"style="cursor: pointer;">
+                    <mat-icon matTooltip="Visualizar detalhes">info</mat-icon>
+                </a>
+                <a routerLink="{{ '/cliente/atualizacao/' + cliente.id }}">
+                    <mat-icon matTooltip="Editar cadastro">create</mat-icon>
+                </a>
+                <a (click)="removerDialog(cliente.id)" style="cursor: pointer;">
+                    <mat-icon matTooltip="Excluir cadastro">clear</mat-icon>
+                </a>
+            </mat-cell>
+            
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas"></mat-row>
+    </mat-table>
+
+    <mat-paginator class="mat-elevation-z8">
+        #paginator
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 15, 20]"
+    </mat-paginator>
+
+</div>

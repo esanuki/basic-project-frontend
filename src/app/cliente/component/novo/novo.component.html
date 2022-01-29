@@ -1,1 +1,68 @@
-<p>novo works!</p>
+<form [formGroup]="form" fxFlex="30" fxFlexOffset="35">
+    <mat-list>
+        <mat-list-item>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Nome" formControlName="nome">
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input [textMask]="{mask: MASKS.cpf.textMask}" matInput type="text" placeholder="CPF" formControlName="cpf" >
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input matInput type="text" placeholder="E-mail" formControlName="email">
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input mask="(00) 00000-0000" matInput type="text"  placeholder="Telefone" formControlName="telefone">
+            </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-form-field>
+                <input matInput mask="d0/M0/0000" [matDatepicker]="data" 
+                    placeholder="Data" #dataNascimento>
+                <mat-datepicker-toggle matSuffix
+                    [for]="data"></mat-datepicker-toggle>
+                <mat-datepicker touchUi="true" #data></mat-datepicker>
+
+            </mat-form-field>
+        </mat-list-item>
+        <div formGroupName="endereco">
+            <mat-list-item>
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Endereco" formControlName="logradouro">
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-form-field>
+                    <input cep [textMask]="{mask: MASKS.cep.textMask}" matInput type="text" placeholder="Cep" formControlName="cep">
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Cidade" formControlName="cidade">
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-form-field>
+                    <mat-select
+                        placeholder="UF"
+                        formControlName="uf">
+                        <mat-option *ngFor="let estado of estados" [value]="estado">{{ estado }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-list-item>
+        </div>
+        
+        <mat-list-item fxLayoutAlign="center">
+            <button mat-raised-button color="primary" (click)="cadastrar()">
+                Salvar
+            </button>
+            &nbsp;
+            <a mat-raised-button [routerLink]="['/cliente/listagem']">Voltar</a>
+        </mat-list-item>
+    </mat-list>
+</form>

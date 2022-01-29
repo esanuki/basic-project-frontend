@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { MenuComponent } from './component/menu/menu.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ import { MenuComponent } from './component/menu/menu.component';
   ],
   imports: [
     CommonModule,
-    
+    RouterModule,
     FlexLayoutModule,
     MatMenuModule,
     MatIconModule,
