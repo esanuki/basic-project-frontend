@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NovoComponent } from './component/novo/novo.component';
-import { ListagemComponent } from './component/listagem/listagem.component';
 import { AtualizacaoComponent } from './component/atualizacao/atualizacao.component';
 import { DetalhesComponent } from './component/detalhes/detalhes.component';
+import { ListagemComponent } from './component/listagem/listagem.component';
+import { NovoComponent } from './component/novo/novo.component';
+import { ProdutoComponent } from './component/produto.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,31 +15,31 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { ClienteRoutingModule } from './cliente-routing.module';
-import { ClienteRouterComponent } from './component/cliente.router.component';
-import { NgBrazil } from 'ng-brazil';
-import { TextMaskModule } from 'angular2-text-mask';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
-import { ClienteService } from './services/cliente.service';
-import { SharedModule } from '../shared/shared.module';
-import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ClienteResolve } from './services/cliente.resolve';
+import { MatSortModule } from '@angular/material/sort';
+import { ProdutoRoutingModule } from './produto-routing.module';
+import { TextMaskModule } from 'angular2-text-mask';
+import { NgxMaskModule } from 'ngx-mask';
+import { SharedModule } from '../shared/shared.module';
+import { ProdutoService } from './services/produto.service';
+import { NgBrazil } from 'ng-brazil';
+import { ProdutoResolve } from './services/produto.resolve';
+
 
 
 @NgModule({
   declarations: [
-    ClienteRouterComponent,
-    NovoComponent, 
-    ListagemComponent, 
+    ProdutoComponent,
+    NovoComponent,
     AtualizacaoComponent, 
-    DetalhesComponent
+    DetalhesComponent, 
+    ListagemComponent, 
+   
   ],
   imports: [
+    CommonModule,
+    RouterModule,
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
@@ -50,9 +51,6 @@ import { ClienteResolve } from './services/cliente.resolve';
     MatSnackBarModule,
     MatListModule,
     FlexLayoutModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -61,12 +59,11 @@ import { ClienteResolve } from './services/cliente.resolve';
     NgxMaskModule.forRoot(),
     SharedModule,
 
-    ClienteRoutingModule
+    ProdutoRoutingModule
   ],
   providers: [
-    ClienteService,
-    ClienteResolve,
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+    ProdutoService,
+    ProdutoResolve
   ]
 })
-export class ClienteModule { }
+export class ProdutoModule { }

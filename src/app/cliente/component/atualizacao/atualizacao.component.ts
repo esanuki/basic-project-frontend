@@ -71,7 +71,7 @@ export class AtualizacaoComponent implements OnInit, AfterViewInit {
   }
 
   preencherForm() {
-    console.log(this.cliente);
+    
     this.form.patchValue({
       id: this.cliente.id,
       nome: this.cliente.nome,

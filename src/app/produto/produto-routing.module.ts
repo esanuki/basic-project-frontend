@@ -1,18 +1,17 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AuthGuard } from "../shared/services/auth.guard";
 import { AtualizacaoComponent } from "./component/atualizacao/atualizacao.component";
-import { ClienteRouterComponent } from "./component/cliente.router.component";
 import { DetalhesComponent } from "./component/detalhes/detalhes.component";
 import { ListagemComponent } from "./component/listagem/listagem.component";
 import { NovoComponent } from "./component/novo/novo.component";
-import { ClienteResolve } from "./services/cliente.resolve";
+import { ProdutoComponent } from "./component/produto.component";
+import { ProdutoResolve } from "./services/produto.resolve";
 
-export const clienteRoutes: Routes = [
+export const produtoRoutes: Routes = [
     {
         path: '',
-        component: ClienteRouterComponent,
-        canActivate: [AuthGuard],
+        component: ProdutoComponent,
+        //canActivate: [AuthGuard],
         children: [
             { path: 'novo', component: NovoComponent },
             { path: 'listagem', component: ListagemComponent },
@@ -20,14 +19,14 @@ export const clienteRoutes: Routes = [
                 path: 'atualizacao/:id', 
                 component: AtualizacaoComponent,
                 resolve: {
-                    cliente: ClienteResolve
+                    produto: ProdutoResolve
                 }
             },
             { 
                 path: 'detalhes/:id', 
                 component: DetalhesComponent, 
                 resolve: {
-                    cliente: ClienteResolve
+                    produto: ProdutoResolve
                 }
             }
         ]
@@ -35,7 +34,7 @@ export const clienteRoutes: Routes = [
 ]
 
 @NgModule({
-    imports: [RouterModule.forChild(clienteRoutes)],
+    imports: [RouterModule.forChild(produtoRoutes)],
     exports: [RouterModule]
 })
-export class ClienteRoutingModule {}
+export class ProdutoRoutingModule {}
