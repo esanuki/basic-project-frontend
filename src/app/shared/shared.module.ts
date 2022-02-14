@@ -9,12 +9,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerDialog } from "./component/spinner/dialogs/spinner.dialog";
 import { SpinnerComponent } from "./component/spinner/spinner.component";
 import { ConfirmarDialog } from "./dialogs/confirmar/confirmar.dialog";
+import { DateFormatPipe } from "./pipe/data-format.pipe";
 
 @NgModule({
     declarations: [
         SpinnerComponent,
         SpinnerDialog,
-        ConfirmarDialog
+        ConfirmarDialog,
+        DateFormatPipe
     ],
     imports: [
         CommonModule,
@@ -25,7 +27,8 @@ import { ConfirmarDialog } from "./dialogs/confirmar/confirmar.dialog";
         FlexLayoutModule,
     ],
     exports: [
-        SpinnerComponent
+        SpinnerComponent,
+        DateFormatPipe,
     ]
 })
 export class SharedModule {}

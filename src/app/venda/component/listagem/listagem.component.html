@@ -1,0 +1,59 @@
+<div fxFlex="90" fxFlexOffset="5">
+    <a mat-raised-button color="warn" [routerLink]="['/venda/novo']" class="mat-margin-bottom">Adicionar Venda</a>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8 demo-table">
+        
+        <ng-container matColumnDef="cliente" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Cliente
+            </mat-header-cell>
+            <mat-cell *matCellDef="let venda">
+                {{ venda.cliente }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="datavenda">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Data Venda
+            </mat-header-cell>
+            <mat-cell *matCellDef="let venda">
+                {{ venda.dataVenda | data }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="totalvenda">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Valor Total
+            </mat-header-cell>
+            <mat-cell *matCellDef="let venda">
+                {{ venda.totalVenda | currencyBrazil}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acao">
+            <mat-header-cell *matHeaderCellDef>
+                Ação
+            </mat-header-cell>
+            <mat-cell *matCellDef="let venda">
+                <a routerLink="{{ '/venda/detalhes/' + venda.id }}"style="cursor: pointer;">
+                    <mat-icon matTooltip="Visualizar detalhes">info</mat-icon>
+                </a>
+                <a routerLink="{{ '/venda/atualizacao/' + venda.id }}">
+                    <mat-icon matTooltip="Editar venda">create</mat-icon>
+                </a>
+                <a (click)="removerDialog(venda.id)" style="cursor: pointer;">
+                    <mat-icon matTooltip="Excluir venda">clear</mat-icon>
+                </a>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas"></mat-row>
+    </mat-table>
+
+    <mat-paginator class="mat-elevation-z8">
+        #paginator
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 15, 20]"
+    </mat-paginator>
+</div>

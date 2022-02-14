@@ -1,0 +1,69 @@
+<div>
+    <form [formGroup]="form" fxFlex="60" fxFlexOffset="20" novalidate>
+        <mat-list fxFlex="80">
+            <mat-list-item>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Cliente" [readonly]="true" formControlName="cliente" >                    
+                </mat-form-field>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-form-field style="width: 25%">
+                    <input matInput mask="d0/M0/0000" placeholder="Data de Venda" [readonly]="true"  #dataVenda>
+                </mat-form-field>
+            </mat-list-item>
+        </mat-list>
+        <mat-list fxFlex="20">
+            <mat-list-item >
+                <a mat-button color="primary" routerLink="/venda/listagem">Voltar</a>
+            </mat-list-item>
+        </mat-list>
+        
+    
+        
+    </form>
+</div>
+
+<div>
+    <mat-table [dataSource]="dataSource" fxFlex="80" fxFlexOffset="10">
+        <ng-container matColumnDef="descricao">
+            <mat-header-cell *matHeaderCellDef>
+                Produto
+            </mat-header-cell>
+            <mat-cell *matCellDef="let vendaItemLista">
+                {{ vendaItemLista.produto.descricao }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qtd">
+            <mat-header-cell *matHeaderCellDef>
+                Quantidade
+            </mat-header-cell>
+            <mat-cell *matCellDef="let vendaItemLista">
+                {{ vendaItemLista.qtde }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valorunitario">
+            <mat-header-cell *matHeaderCellDef>
+                Valor Unitário
+            </mat-header-cell>
+            <mat-cell *matCellDef="let vendaItemLista">
+                {{ vendaItemLista.valorUnitario }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valortotal">
+            <mat-header-cell *matHeaderCellDef>
+                Valor Total
+            </mat-header-cell>
+            <mat-cell *matCellDef="let vendaItemLista">
+                {{ vendaItemLista.valorTotal }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas"></mat-row>
+    </mat-table>
+</div>
+

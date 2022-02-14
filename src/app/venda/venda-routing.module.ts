@@ -5,13 +5,13 @@ import { AtualizacaoComponent } from "./component/atualizacao/atualizacao.compon
 import { DetalhesComponent } from "./component/detalhes/detalhes.component";
 import { ListagemComponent } from "./component/listagem/listagem.component";
 import { NovoComponent } from "./component/novo/novo.component";
-import { ProdutoComponent } from "./component/produto.component";
-import { ProdutoResolve } from "./services/produto.resolve";
+import { VendaComponent } from "./component/venda.component";
+import { VendaResolve } from "./services/venda.resolve";
 
-export const produtoRoutes: Routes = [
+export const vendaRoutes: Routes = [
     {
         path: '',
-        component: ProdutoComponent,
+        component: VendaComponent,
         canActivate: [AuthGuard],
         children: [
             { path: 'novo', component: NovoComponent },
@@ -20,14 +20,14 @@ export const produtoRoutes: Routes = [
                 path: 'atualizacao/:id', 
                 component: AtualizacaoComponent,
                 resolve: {
-                    produto: ProdutoResolve
+                    venda: VendaResolve
                 }
             },
             { 
                 path: 'detalhes/:id', 
                 component: DetalhesComponent, 
                 resolve: {
-                    produto: ProdutoResolve
+                    venda: VendaResolve
                 }
             }
         ]
@@ -35,7 +35,7 @@ export const produtoRoutes: Routes = [
 ]
 
 @NgModule({
-    imports: [RouterModule.forChild(produtoRoutes)],
+    imports: [RouterModule.forChild(vendaRoutes)],
     exports: [RouterModule]
 })
-export class ProdutoRoutingModule {}
+export class VendaRoutingModule {}

@@ -7,7 +7,7 @@
 
   <button mat-button [matMenuTriggerFor]="belowMenu">Movimentação</button>
   <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item (click)="movimentacaoVenda()">Vendas</button>
+    <button mat-menu-item [routerLink]="['/venda/listagem']">Vendas</button>
   </mat-menu>
 
 </div>
